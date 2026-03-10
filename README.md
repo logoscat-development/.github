@@ -1,0 +1,2 @@
+# .logoscat
+Logoscat - Polyglot Workspace
