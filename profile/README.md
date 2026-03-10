@@ -1,7 +1,7 @@
 ## LogosCat - Polyglot Workspace
 
 
-## LogosCat maintained by creator
+## LogosCat maintained by creator in a closed repo 
 To participate in the project: 
 
 1) <a href="https://portal.logoscat.com/" target="_blank">register</a>  and try it   
