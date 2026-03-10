@@ -4,7 +4,7 @@
 ## LogosCat maintained by creator
 To participate in the project: 
 
-1) register and try it
+1) <a href="https://portal.logoscat.com/" target="_blank">register</a>  and try it   
 2) conceive an idea
 3) send an e-mail to support@logoscat.com, describing your idea and a plan to implement it
 
