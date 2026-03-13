@@ -7,6 +7,10 @@ There are many ways to learn a language — read <a href="https://portal.logosca
 LogosCat is for people learning while reading books/articles, listening, concentrating on hard parts, analyzing texts and expanding vocabulary.
 LogosCat is for people who love languages.
 
+## LogosCat architecture?
+
+<a href="https://portal.logoscat.com/shakti-architecture/" target="_blank">HERE</a>  
+
 ## LogosCat maintained by creator in a closed repo 
 To participate in the project: 
 
