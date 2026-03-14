@@ -9,7 +9,13 @@ LogosCat is for people who love languages.
 
 ## LogosCat architecture?
 
-<a href="https://portal.logoscat.com/shakti-architecture/" target="_blank">HERE</a>  
+A part of it...to get a taste...
+
+![Alt text](arch.png)
+
+
+
+
 
 ## LogosCat maintained by creator in a closed repo 
 To participate in the project: 
