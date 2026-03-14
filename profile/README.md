@@ -14,7 +14,134 @@ A part of it...to get a taste...
 ![Alt text](arch.png)
 
 
+# Overview
 
+**LogosCat** is a multi-language learning platform.
+
+Its backend and UIs live in the **shakti-actors** Scala application, which coordinates several Python microservices for translation, text-to-speech, and text analysis.
+
+All deployment, Docker setup, and orchestration live in **shakti-deployment**.
+
+# Central Hub: shakti-actors
+
+**shakti-actors** is a Scala application built on **Akka (Pekko) Typed** and **Akka HTTP**.
+
+It acts as the main web server, serves static UIs, and orchestrates work across the other services.
+
+It serves:
+
+- The main workspace (desktop and mobile variants)
+- The memorize (vocabulary practice) page
+- Recap, stories, library, and other learning pages
+- Static assets and HTML/JS/CSS
+
+HTTP routes are defined in **UIActor** and **StaticRouteHandler**.
+
+Each feature (translation, TTS, analysis, history, etc.) has its own handler that validates the request, talks to the right service, and returns the response.
+
+# Python Microservices
+
+Three Python services handle core logic:
+
+- **shakti-translator-api** — Translation between supported languages. **shakti-actors** calls it for translation and gets structured results (word-level, sentence-level, etc.).
+- **shakti-sound-api** — Text-to-speech. Requests specify text and language; the service returns or stores audio, and **shakti-actors** caches results to avoid repeated calls.
+- **shakti-analysis-api** — Text analysis for morphological and etymological explanations. **shakti-actors** forwards selected text and gets HTML-formatted results.
+
+Each Python service is focused on its task.
+
+**shakti-actors** does validation, session handling, caching, and persistence.
+
+Inter-service calls use HTTP, with authentication between services as configured in deployment.
+
+# Database and Data Persistence
+
+**PostgreSQL** holds user and learning data.
+
+**shakti-actors** owns the schema and migrations (in its migration scripts) and uses **Slick** for access.
+
+Main data categories:
+
+- Users and authentication-related data
+- `work_history_items` — Translation, analysis, and TTS outputs linked to the user and workspace session
+- Memorization data (for example, words, hard words, learning events)
+- Stories, library/book metadata, positions
+- Voices, supported languages, and similar configuration
+
+Analysis results and TTS outputs are stored in history so users can re-read them, replay audio, and use them for vocabulary practice.
+
+# Learning and Memorization
+
+There is a learning subsystem for vocabulary practice:
+
+- **Learning events** — User actions (for example, translating, marking known words, viewing context) are recorded as events.
+- **Memorization** — Words and their contexts are stored and used to build practice sessions.
+- **Projection** — Events are processed and projected into memorization tables (for example, `memorization_words`, `hard_words`) for efficient retrieval.
+- **Session and hub modes** — Practice can be tied to a specific recap session or a global “hub” of hard words across the user’s history.
+
+The memorize page fetches words from the memorization APIs and lets users practice (“I know this”, “Skip”), with optional TTS and context from history.
+
+The **Word history** section shows past occurrences from the history search (yesterday/recall) so users can see how a word was used before.
+
+# History Search (Yesterday Mode)
+
+**Yesterday** is a history search feature.
+
+Users search by words and language to find past translations, analyses, and TTS outputs.
+
+It uses PostgreSQL full-text search on `work_history_items` and returns paginated pages with items (input, output, analysis, audio) grouped by date.
+
+This logic is shared by the main workspace and the memorize page.
+
+# Chrome Extension
+
+A separate Chrome extension connects to the Shakti backend.
+
+It is not part of **shakti-deployment** and is built independently, but it uses the same backend APIs (with proper configuration) to support reading and translation workflows inside the browser.
+
+# Administration: shakti-admin
+
+**shakti-admin** is a Django application for administrative tasks.
+
+It manages users, configuration, and platform data, and is deployed as part of the platform stack.
+
+# Deployment
+
+**shakti-deployment** manages:
+
+- Docker Compose setups for all services
+- Nginx as reverse proxy and SSL termination
+- Database initialization and migrations
+- SSL certificates (for example, Let’s Encrypt) for production
+- A local/dev mode that runs without SSL and with volume mounts for development
+
+All deployment scripts and Docker configuration live in **shakti-deployment**; individual apps focus on their own logic.
+
+# Real-Time Updates
+
+**Server-Sent Events (SSE)** are used for real-time updates.
+
+For example, TTS progress and story generation status are pushed to the client.
+
+Sessions are identified so updates reach the right user.
+
+# Tracing and Observability
+
+Requests are expected to carry `userId` and `traceId` through the system.
+
+Logging uses a structured format (for example, JSON) to support monitoring and troubleshooting without exposing sensitive data.
+
+**shakti-deployment** includes **Grafana**, **Promtail**, and related monitoring components.
+
+# Summary
+
+LogosCat uses a **hub-and-spoke** layout:
+
+- **shakti-actors** hosts UIs and orchestrates translation, TTS, and analysis via Python microservices
+- **PostgreSQL** stores user and learning data
+- A learning/memorization subsystem drives vocabulary practice
+- Deployment, SSL, and monitoring are centralized in **shakti-deployment**
+- **shakti-admin** handles administration
+- A Chrome extension extends the experience into the browser
 
 
 ## LogosCat maintained by creator in a closed repo 
@@ -38,4 +165,8 @@ To participate in the project:
 10. <a href="https://portal.logoscat.com/word-grabber/" target="_blank">Use Words Grabber</a> - to focus on some words
 11. Having trouble? Go to **Settings → Report Issue**
 12. Need to top up? Go to **Settings → Balance**
+
+
+
+
 
