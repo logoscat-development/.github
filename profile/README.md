@@ -104,6 +104,15 @@ It is not part of **shakti-deployment** and is built independently, but it uses 
 
 It manages users, configuration, and platform data, and is deployed as part of the platform stack.
 
+
+# Talk-brain (Beta)
+
+shakti-talk-brain is the conversation “brain” for the Shakti language-learning stack. 
+It’s built around LangGraph: each conversation variant is a StateGraph of nodes and conditional edges. 
+The service compiles one graph per version (build_graph()), invokes it per user turn with ainvoke(), 
+and persists state between turns outside the graph. So it’s LangGraph at the core—stateful, multi-node conversation workflows 
+(init, extraction, drill, iteration, normal chat, safe fallback) with validated routing and one LLM call per turn where applicable.
+
 # Deployment
 
 **shakti-deployment** manages:
