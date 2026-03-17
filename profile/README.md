@@ -1,7 +1,7 @@
 ## LogosCat - Polyglot Workspace - Learn language by reading, listening, translating, analyzing, using AI tools
 
 
-## What is LogosCat? LogosCat is a Cat helping polyglots to fulfill their dreams about work environment.
+## What is LogosCat? 
 
 There are many ways to learn a language — read <a href="https://portal.logoscat.com/finding-your-path-to-fluency/" target="_blank">this</a> if you're still exploring which approach works best for you.
 LogosCat is for people learning while reading books/articles, listening, concentrating on hard parts, analyzing texts and expanding vocabulary.
