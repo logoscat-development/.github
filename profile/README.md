@@ -7,6 +7,25 @@ There are many ways to learn a language — read <a href="https://portal.logosca
 LogosCat is for people learning while reading books/articles, listening, concentrating on hard parts, analyzing texts and expanding vocabulary.
 LogosCat is for people who love languages.
 
+LogosCat.com is a polyglot workspace for people who learn languages by reading and listening to ebooks or web content.
+
+It provides a rich set of tools to translate and extract meaning, recognize pronunciation, memorize vocabulary, and analyze difficult parts of a text in multiple ways.
+
+LogosCat also includes a sophisticated analytical layer that suggests what the user should do next based on their learning outcomes and progress.
+
+The platform currently supports 30 human languages and is built using Google APIs, OpenAI, Scala, Python, and Docker (specialized microservices) — with a full monitoring stack running behind the scenes.
+
+Yes, it is a hobby project — but I have never seen anything comparable for people learning languages through reading real books, listening to speech and seriously working on vocabulary memorization. 
+
+Use desktop version to get the best out of it daily. Use mobile to recap while traveling..
+
+Using the desktop version, you can upload PDF or EPUB files into your LC workspace and read them seamlessly.
+With the Chrome plugin, you can bring web content directly into your LC workspace and read it there.
+
+This is a new kind of reading experience: you don’t just translate — you can analyze any part of the text as deeply as you want. You can also listen to what you read, activating the auditory pathways of your brain.
+
+A rich set of features, all focused on one goal: improving your proficiency in a foreign language.
+
 ## LogosCat architecture?
 
 A part of it...to get a taste...
