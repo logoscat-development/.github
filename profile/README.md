@@ -1,5 +1,6 @@
 ## LogosCat - Polyglot Workspace - Learn language by reading, listening, translating, analyzing, using AI tools
 
+![Alt text](cat.jpg)
 
 ## What is LogosCat? 
 
