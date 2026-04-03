@@ -112,6 +112,10 @@ It uses PostgreSQL full-text search on `work_history_items` and returns paginate
 
 This logic is shared by the main workspace and the memorize page.
 
+# Sgakti-game-engine (Beta)
+
+rust based engine for textual games and puzzles
+
 # Chrome Extension
 
 A separate Chrome extension connects to the Shakti backend.
