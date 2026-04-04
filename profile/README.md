@@ -102,6 +102,11 @@ The memorize page fetches words from the memorization APIs and lets users practi
 
 The **Word history** section shows past occurrences from the history search (yesterday/recall) so users can see how a word was used before.
 
+# In-process (beta) : Language Puzzles
+
+- Game engine build in Rust - language puzzles provide a new, advanced way to learn language.
+
+
 # History Search (Yesterday Mode)
 
 **Yesterday** is a history search feature.
